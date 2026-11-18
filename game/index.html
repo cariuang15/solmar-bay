@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SOLMAR BAY — an open-world crime story</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="app">
+  <canvas id="scene"></canvas>
+
+  <!-- HUD -->
+  <div id="hud" class="hidden">
+    <div id="hud-topleft">
+      <canvas id="minimap" width="190" height="190"></canvas>
+      <div id="objective"><span id="objective-label">OBJECTIVE</span><span id="objective-text"></span></div>
+      <div id="mission-timer"></div>
+    </div>
+    <div id="hud-topright">
+      <div id="wanted"></div>
+      <div id="money">$0</div>
+      <div id="radio">SOL FM</div>
+    </div>
+    <div id="hud-bottomleft">
+      <div id="health-wrap"><div id="health-bar"></div><span id="health-text">100</span></div>
+      <div id="car-health-wrap" class="hidden"><div id="car-health-bar"></div><span>CAR</span></div>
+    </div>
+    <div id="hud-bottomright">
+      <div id="speed">0</div><div id="speed-unit">MPH</div>
+      <div id="vehicle-name"></div>
+    </div>
+    <div id="crosshair" class="hidden">+</div>
+    <div id="prompt"></div>
+    <div id="banner"></div>
+    <div id="hint">WASD move &nbsp;·&nbsp; E enter / exit car &nbsp;·&nbsp; Click shoot &nbsp;·&nbsp; R radio &nbsp;·&nbsp; P pause</div>
+  </div>
+
+  <!-- Start screen -->
+  <div id="menu" class="screen">
+    <div class="menu-inner">
+      <div class="menu-kicker">A SUN-SOAKED OPEN-WORLD CRIME STORY</div>
+      <h1 class="menu-title">SOLMAR<br>BAY</h1>
+      <p class="menu-story">Kai Reyes came to Solmar Bay with a busted car and a pocket full of nothing.
+      Mama Lu runs the garage on Palm Row and she has work for a driver who asks no questions.
+      Seven jobs. One reputation. The whole city watching.</p>
+      <div class="menu-buttons">
+        <button id="btn-start">START STORY</button>
+        <button id="btn-continue" class="hidden">CONTINUE — <span id="continue-info"></span></button>
+        <button id="btn-free">FREE ROAM</button>
+      </div>
+      <div class="menu-controls">
+        <div><b>W A S D</b> move / drive</div>
+        <div><b>Mouse</b> look &amp; aim (drag to orbit camera)</div>
+        <div><b>E</b> enter / steal car · exit car</div>
+        <div><b>Click</b> shoot (on foot)</div>
+        <div><b>Shift</b> run · <b>R</b> radio · <b>P</b> pause · <b>M</b> mute</div>
+      </div>
+      <div class="menu-foot">An original game. No real city, no real people, no borrowed assets.<br>
+      Best played in desktop Chrome. Progress saves automatically.</div>
+    </div>
+  </div>
+
+  <!-- Pause screen -->
+  <div id="pause" class="screen hidden">
+    <div class="menu-inner">
+      <h1 class="menu-title small">PAUSED</h1>
+      <p class="menu-story" id="pause-stats"></p>
+      <div class="menu-buttons">
+        <button id="btn-resume">RESUME</button>
+        <button id="btn-restart">RESTART STORY</button>
+        <button id="btn-quit">QUIT TO MENU</button>
+      </div>
+      <div class="menu-controls">
+        <div><b>W A S D</b> move / drive &nbsp;·&nbsp; <b>E</b> enter / steal car</div>
+        <div><b>Click</b> shoot &nbsp;·&nbsp; <b>Shift</b> run &nbsp;·&nbsp; <b>R</b> radio</div>
+        <div>Missions: drive or walk into the yellow <b>L</b> marker at Mama Lu's garage.</div>
+        <div>Lose the cops: break line of sight and stay hidden — stars fade.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Busted / wasted / complete screens -->
+  <div id="busted" class="screen hidden">
+    <div class="menu-inner">
+      <h1 class="menu-title small red">BUSTED</h1>
+      <p class="menu-story" id="busted-text">The Solmar Bay PD caught up with you.</p>
+      <div class="menu-buttons"><button id="btn-busted">BACK ON THE STREET</button></div>
+    </div>
+  </div>
+  <div id="wasted" class="screen hidden">
+    <div class="menu-inner">
+      <h1 class="menu-title small red">WASTED</h1>
+      <p class="menu-story">You went down in Solmar Bay. The city keeps moving without you.</p>
+      <div class="menu-buttons"><button id="btn-wasted">BACK ON THE STREET</button></div>
+    </div>
+  </div>
+  <div id="complete" class="screen hidden">
+    <div class="menu-inner">
+      <div class="menu-kicker">THE BIG SCORE IS DONE</div>
+      <h1 class="menu-title small gold">SOLMAR BAY<br>IS YOURS</h1>
+      <p class="menu-story" id="complete-text"></p>
+      <div class="menu-buttons">
+        <button id="btn-complete">KEEP PLAYING — FREE ROAM</button>
+        <button id="btn-complete-menu">BACK TO MENU</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="vendor/three.min.js"></script>
+<script src="src/config.js"></script>
+<script src="src/audio.js"></script>
+<script src="src/effects.js"></script>
+<script src="src/city.js"></script>
+<script src="src/vehicles.js"></script>
+<script src="src/pedestrians.js"></script>
+<script src="src/player.js"></script>
+<script src="src/police.js"></script>
+<script src="src/missions.js"></script>
+<script src="src/hud.js"></script>
+<script src="src/save.js"></script>
+<script src="src/game.js"></script>
+</body>
+</html>
